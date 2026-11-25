@@ -7,7 +7,7 @@
 
 An all-in-one, async **Web3 & EVM Swiss Army Knife Telegram Bot** built with **Python 3.11+**, **aiogram 3.x**, **Web3.py**, **py-solc-x**, and **Google Gemini**. Designed as an instant on-the-go utility for smart-contract security auditors, protocol researchers, bug bounty hunters, and Solidity engineers.
 
-Supports both **21 interactive slash commands** (with category navigation keyboards) and **Telegram Inline Queries** (`@YourBotName <query>`) directly inside any chat, group, or DM.
+Supports both **21 core slash commands** (plus `/start` and short aliases, with category navigation keyboards) and **Telegram Inline Queries** (`@YourBotName <query>`) directly inside any chat, group, or DM.
 
 ---
 
@@ -229,7 +229,7 @@ Extracts the 4-byte selector, queries OpenChain and 4byte Directory, and ABI-dec
 ```
 
 #### `/hash <signature>`
-Calculates the 4-byte selector and full Keccak-256 hash of a function or event signature (ignores whitespace inside argument lists).
+Calculates the 4-byte selector (stripping whitespace before hashing) and the full Keccak-256 hash of the input signature.
 
 ```text
 /hash transfer(address,uint256)
@@ -297,7 +297,7 @@ Reads a 32-byte word via `eth_getStorageAt` and decodes it into raw hex, `uint25
 ### 5. Proxy, Source, Token & Gas Diagnostics
 
 #### `/proxy <contract_address> [chain]`
-Detects upgradeable proxy patterns and resolves logic implementation, proxy admin, and beacon addresses across EIP-1967, EIP-1822 UUPS, OpenZeppelin Legacy, and EIP-897.
+Detects upgradeable proxy patterns and resolves logic implementation, proxy admin, and beacon addresses across EIP-1967 (Transparent, UUPS, and Beacon), EIP-1822 UUPS, OpenZeppelin Legacy, and EIP-897.
 
 ```text
 /proxy 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48 eth
